@@ -5,13 +5,7 @@ import "./Expenses.css";
 import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
 
-function ExpenseItems(props) {
-    const expenseData = props.expenseData;
-    const expenseItems = [];
-    expenseData.forEach(element => {
-        expenseItems.push(<ExpenseItem date={element.date} title={element.title} price={element.price} />);
-    });
-
+function Expenses(props) {
     /* */
     const [filteredYear, setFilteredYear] = useState('2020');
 
@@ -23,11 +17,13 @@ function ExpenseItems(props) {
         <div>
             <Card className="expenses">
                 <ExpensesFilter selected={filteredYear} onChangeFilter={changeExpensesFilterHandler} />
-                {expenseItems}
+                {props.expenseData.map((expense) => (
+                    <ExpenseItem date={expense.date} title={expense.title} price={expense.price} />
+                ))}
             </Card>
         </div>
     );
 
 }
 
-export default ExpenseItems;
+export default Expenses;

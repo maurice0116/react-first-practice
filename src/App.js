@@ -1,4 +1,4 @@
-import ExpenseItems from "./components/ExpensesInfo/Expenses";
+import Expenses from "./components/ExpensesInfo/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <ExpenseItems expenseData={expenseItems} />
+      <Expenses expenseData={expenseItems} />
     </div>
   );
 }
