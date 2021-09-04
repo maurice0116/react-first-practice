@@ -29,6 +29,7 @@ This Section is about Rendering Lists and Conditional Content.
 3. React Key 值運用
 在前面的步驟中，我們將 Expenses 改為使用動態的方式去產生，但是在開發者模式卻產生以下錯誤訊息：
 > ![UniqueKey](img/UniqueKey.png)
+
 這代表甚麼意思？舉例來說，假設今天 App.js 的資料如下要呈現到畫面上↓
 ```
 const DUMMY_EXPENSES = [
@@ -59,15 +60,12 @@ const DUMMY_EXPENSES = [
 ];
 ```
 呈現到畫面上後會組成如下：
-> html
 > ![Expenses](img/Expenses.png)
 
-> 畫面
 > ![ExpensesDemo_1](img/ExpensesDemo_1.png)
 
 假設今天新增一筆新的 Expense ，雖然畫面呈現會顯示在第一筆...
 
-> 新增後畫面
 > ![ExpensesDemo_2](img/ExpensesDemo_2.png)
 
 實際上 React 會先將新增的資料放置最後一筆後，再重新更新一次所有 Items ，按照 Array 的順序抽換裡面的資料，讓顯示出來的畫面與 Array 裡面的資料一致。雖然結果與預期相符，但是並不是那麼的有效率，並且可能會導致 Bug 產生。
