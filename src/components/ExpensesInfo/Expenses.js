@@ -18,7 +18,12 @@ function Expenses(props) {
             <Card className="expenses">
                 <ExpensesFilter selected={filteredYear} onChangeFilter={changeExpensesFilterHandler} />
                 {props.expenseData.map((expense) => (
-                    <ExpenseItem date={expense.date} title={expense.title} price={expense.price} />
+                    <ExpenseItem
+                        key={expense.id} // Using key to let React identified which item is changed or add
+                        date={expense.date}
+                        title={expense.title}
+                        price={expense.price}
+                    />
                 ))}
             </Card>
         </div>
