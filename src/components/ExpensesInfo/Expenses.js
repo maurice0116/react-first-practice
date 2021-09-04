@@ -6,25 +6,21 @@ import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
 
 function Expenses(props) {
-    let outputExpenses = props.expenseData;
-
     const [filteredYear, setFilteredYear] = useState('2020');
 
     const changeExpensesFilterHandler = (selectedYear) => {
         setFilteredYear(selectedYear);
     }
 
-    const createOutputExpenses = (filteredYear) => {
-        return props.expenseData.filter((expense) => expense.date.getFullYear().toString() === filteredYear);
-    }
-
-    outputExpenses = createOutputExpenses(filteredYear);
+    const filteredExpenses = props.expenseData.filter(expense => {
+        return expense.date.getFullYear().toString() === filteredYear;
+    });
 
     return (
         <div>
             <Card className="expenses">
                 <ExpensesFilter selected={filteredYear} onChangeFilter={changeExpensesFilterHandler} />
-                {outputExpenses.map((expense) => (
+                {filteredExpenses.map((expense) => (
                     <ExpenseItem
                         key={expense.id} // Using key to let React identified which item is changed or add
                         date={expense.date}
