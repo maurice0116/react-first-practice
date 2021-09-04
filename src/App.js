@@ -35,10 +35,8 @@ function App() {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
   const addExpenseHandler = (expense) => {
+    // 將原本的Expense解構並將新增的Expense資料放入
     setExpenses(prevExpenses=> {
-      console.log('In App.js !');
-      console.log(expense);
-      console.log(prevExpenses);
       return [expense, ...prevExpenses];
     });
   }
